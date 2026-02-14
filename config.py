@@ -7,7 +7,7 @@ IMAGES_DIR = "mm_tiser_images"
 
 # base / finetuned model ids
 QWEN_BASE_ID = "Qwen/Qwen3-VL-8B-Instruct"
-QWEN_FINETUNED_ID = "Dancat/MMTiserQwen3VLFTv2"
+QWEN_FINETUNED_ID = "Dancat/MM_Tiser_Qwen3_VL_FT_v2"
 
 # SFT trainer hyperparams 
 SFT_OUTPUT_DIR = "QWEN3_VL_8B_TISER_FT_v2"

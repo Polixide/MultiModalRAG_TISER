@@ -520,13 +520,13 @@ def generate_dataset_parallel(input_file, output_dir, json_output_file, num_work
                 res = uid_to_result[uid]
                 newentry = {
                     "id": q.get("question_id") or q.get("questionid") or q.get("id"),
-                    "datasetname": q.get("datasetname") or q.get("dataset_name"),
+                    "dataset_name": q.get("datasetname") or q.get("dataset_name"),
                     "image": res["path"],
                     "question": q.get("question"),
                     "answer": q.get("answer"),
                     "output": q.get("output"),
-                    "charttype": res["type"],
-                    "numevents": int(res["nev"]),
+                    "chart_type": res["type"],
+                    "num_events": int(res["nev"]),
                 }
                 fout.write(json.dumps(newentry, ensure_ascii=False) + "\n")
                 success_count += 1

@@ -10,21 +10,26 @@ from config import RAG_TOP1_DATASET_FILE
 
 SYSTEM_MESSAGE = (
     "You are an AI assistant that uses a Chain of Thought (CoT) approach with reflection "
-    "to answer queries about charts. Follow these steps: "
-    "Step 1. Reason through the visual data step by step within the reasoning tags. "
+    "to answer queries about charts.\n"
+    "Follow these steps:\n"
+    "Step 1. Reason through the visual data step by step within the <reasoning> tags.\n"
     "Step 2. Given your previous reasoning, identify relevant temporal events in the given "
-    "context for answering the given question within timeline tags. Assume relations in the "
-    "context are unidirectional. "
+    "context for answering the given question within <timeline> tags. Assume relations in the "
+    "context are unidirectional.\n"
     "Step 3. Reflect on your reasoning and the timeline to check for any errors or improvements "
-    "within the reflection tags. "
-    "Step 4. Make any necessary adjustments based on your reflection. "
-    "Step 5. Provide your final, concise answer within the answer tags. "
-    "If the answer is a number, just output the number nothing else. Otherwise output the entity or event, "
-    "without any additional comments. "
-    "Important: The reasoning, reflection and timeline sections are for your internal reasoning process. "
-    "All the reflection and the timeline have to be contained inside the thinking section. "
-    "Do not use enumerations or lists when writing, use plain text instead such as paragraphs. "
-    "The response to the query must be entirely contained within the answer tags."
+    "within the <reflection> tags.\n"
+    "Step 4. Make any necessary adjustments based on your reflection. If there is additional "
+    "reasoning required, go back to Step 1 (reason through the visual data step-by-step), "
+    "otherwise move to the next step (Step 5).\n"
+    "Step 5. Provide your final, concise answer within the <answer> tags. "
+    "If the answer is a number, just output the number, nothing else. "
+    "Otherwise output the entity or event, without any additional comments.\n"
+    "Important: The <reasoning>, <reflection> and <timeline> sections are for your internal reasoning "
+    "process. All the reflection and the timeline have to be contained inside the thinking section.\n"
+    "Do not use enumerations or lists when writing, use plain text instead such as paragraphs.\n"
+    "The response to the query must be entirely contained within the <answer> tags.\n"
+    "Use the following format for your response:\n\n<reasoning>\n[Your step-by-step reasoning goes here. This is your internal thought process.]\n<timeline>\n[Relevant temporal events for answering the given question.]\n</timeline>\n<reflection>\n[Your reflection on your reasoning, checking for errors or improvements]\n</reflection>\n[Any adjustments to your thinking based on your reflection]\n</reasoning>\n<answer>\n[Your final, concise answer to the query.]\n</answer>\n"
+    "When answering, always follow these rules:\n- Use the chart to reason about the order, overlap, and duration of events, and answer exactly what is asked in the question.\n- Identify the event or interval that actually covers the requested date or date range on the timeline.\n- If the requested period is a range (e.g. 2006-2007), the correct event must cover the whole range, not just its start or end.\n- If no event covers the requested date or the whole requested range, answer 'Unknown' (or the event labeled as Unknown in the chart).\n- Never pick an event only because it is the last or the most recent one. Always check whether its interval includes the queried date(s).\n"
 )
 
 
@@ -48,13 +53,14 @@ def run_inference_model(model, proc, example, max_new_tokens: int = 1024) -> str
                 {
                     "type": "text",
                     "text": (
-                        f"Question: {question}\n\n"
-                        "Temporal context: The provided chart contains the temporal context for this question. "
-                        "Important: Use the chart to reason about the order, overlap and duration of events, "
-                        "and answer exactly what is asked in the question. When the question asks about a "
-                        "specific date or date range, identify the event whose interval actually includes that "
-                        "date or fully covers that range. If the chart does not provide enough information to "
-                        "answer, answer Unknown."
+                            f"Question: {question}\n\n"
+                            "Temporal context: The provided chart contains the temporal context "
+                            "for this question.\nImportant: Use the chart to reason about the order, "
+                            "overlap and duration of events, and answer exactly what is asked in the "
+                            "question.\nWhen the question asks about a specific date or date range, "
+                            "identify the event whose interval actually includes that date or fully "
+                            "covers that range.\nIf the chart does not provide enough information to "
+                            "answer, answer Unknown.\n"
                     ),
                 },
             ],
