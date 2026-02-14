@@ -1,7 +1,10 @@
 # Grounding Temporal Reasoning in Retrieval-Augmented Generation through Multi-Granular Timeline Representations
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/Dancat/MultiModal_TISER_train-dataset)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?logo=PyTorch&logoColor=white)](https://pytorch.org/)
+[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/Dancat/MultiModal_TISER_train-dataset)
+[![Model: Qwen3-VL](https://img.shields.io/badge/Model-Qwen3--VL-blueviolet)](https://huggingface.co/Qwen)
 
 ---
 
