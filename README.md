@@ -130,7 +130,7 @@ Project parameters are managed in `config.py`. The key settings include:
 
 ### Model
 - Base: `Qwen/Qwen3-VL-8B-Instruct`
-- Fine-tuned: `Dancat/MMTiserQwen3VLFTv2`
+- Fine-tuned: `Dancat/MM_Tiser_Qwen3_VL_FT_v2`
 
 ### Fine-Tuning (SFT)
 - Epochs: 1
