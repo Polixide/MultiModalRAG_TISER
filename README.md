@@ -1,10 +1,11 @@
-# Grounding Temporal Reasoning in Retrieval-Augmented Generation through Multi-Granular Timeline Representations
+# TISER-based Multimodal Temporal Reasoning via RAG
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/Dancat/MultiModal_TISER_train-dataset)
-[![Model: Qwen3-VL](https://img.shields.io/badge/Model-Qwen3--VL-blueviolet)](https://huggingface.co/Qwen)
+[![Model: Qwen3-VL](https://img.shields.io/badge/Model-Qwen3--VL-blueviolet)](https://huggingface.co/Dancat/MM_Tiser_Qwen3_VL_FT_v2)
+
 
 ---
 
@@ -90,6 +91,10 @@ MultiModalRAG_TISER/
 ├── __init__.py
 ├── config.py                     # Central configuration file (paths, model parameters, training hyperparameters)
 
+├── datasets/
+│   ├── TISER_train.json          # Training split
+│   └── TISER_test.json           # Test split
+
 ├── data/
 │   ├── charts_generator.py       # Timeline visualization and chart generation (Gantt, Scatter, Line)
 │   └── dataset_tiser.py          # Dataset preprocessing and multimodal sample construction
@@ -157,7 +162,7 @@ Project parameters are managed in `config.py`. The key settings include:
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.11+
 - NVIDIA GPU (A100 80GB recommended for full fine-tuning)
 
 ### Setup
@@ -189,7 +194,7 @@ Once `config.py` is configured, you can run the pipeline stages directly.
 Generate visual timelines from textual data and create the multimodal dataset:
 
 ```bash
-python scripts/generate_charts_and_json.py
+python -m scripts.generate_charts_and_json
 ```
 
 ---
@@ -199,7 +204,7 @@ python scripts/generate_charts_and_json.py
 Launch the fine-tuning process using QLoRA:
 
 ```bash
-python scripts/train_qwen_sft.py
+python -m scripts.train_qwen_sft
 ```
 
 ---
@@ -209,9 +214,9 @@ python scripts/train_qwen_sft.py
 Run the full RAG pipeline:
 
 ```bash
-python scripts/build_rag_index.py
-python scripts/compute_rag_recall.py
-python scripts/eval_rag_vlm.py
+python -m scripts.build_rag_index
+python -m scripts.compute_rag_recall
+python -m scripts.eval_rag_vlm
 ```
 
 ---

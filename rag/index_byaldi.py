@@ -5,8 +5,8 @@ from byaldi import RAGMultiModalModel
 from config import RAG_RETRIEVER_NAME, RAG_INDEX_NAME, IMAGES_DIR
 
 
-def load_rag_model(model_name: str = RAG_RETRIEVER_NAME) -> RAGMultiModalModel:
-    rag = RAGMultiModalModel.from_pretrained(model_name)
+def load_rag_model(model_name: str = RAG_INDEX_NAME) -> RAGMultiModalModel:
+    rag = RAGMultiModalModel.from_index(model_name)
     return rag
 
 

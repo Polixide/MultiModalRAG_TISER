@@ -12,15 +12,15 @@ def compute_recall_at_k(dataset_file: str, rag, outfile: str = RAG_RECALL_OUTFIL
 
     stats = {
         "total": 0.0,
-        "perk": {k: 0.0 for k in ks},
-    }
-    per_type = {
-        "gantt": {"total": 0.0, "perk": {k: 0.0 for k in ks}},
-        "scatter": {"total": 0.0, "perk": {k: 0.0 for k in ks}},
-        "line": {"total": 0.0, "perk": {k: 0.0 for k in ks}},
+        "per_k": {k: 0.0 for k in ks},
+        "per_type": {
+          "gantt": {"total": 0.0, "per_k": {k: 0.0 for k in ks}},
+          "scatter": {"total": 0.0, "per_k": {k: 0.0 for k in ks}},
+          "line": {"total": 0.0, "per_k": {k: 0.0 for k in ks}},
+        }
     }
 
-    id2file = rag.get_docids_to_filenames()
+    id2file = rag.get_doc_ids_to_file_names()
 
     outlines = []
     maxk = max(ks)
@@ -68,7 +68,7 @@ def compute_recall_at_k(dataset_file: str, rag, outfile: str = RAG_RECALL_OUTFIL
 
     recall_global = {k: (stats["per_k"][k] / stats["total"] if stats["total"] > 0 else 0.0) for k in ks}
     recall_by_type = {}
-    for t, d in per_type.items():
+    for t, d in stats["per_type"].items():
         recall_by_type[t] = {
             k: (d["per_k"][k] / d["total"] if d["total"] > 0 else 0.0) for k in ks
         }

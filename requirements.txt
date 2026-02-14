@@ -1,34 +1,34 @@
-Byaldi                    0.0.7  
-accelerate                1.12.0  
-bitsandbytes              0.49.1  
-colpali_engine            0.3.13  
-datasets                  4.5.0  
-deepspeed                 0.18.2  
-einops                    0.8.1  
-evaluate                  0.4.1  
-flash_attn                2.8.3+cu128torch2.9  
-huggingface_hub           1.4.1  
-jsonlines                 4.0.0  
-matplotlib-inline         0.2.1  
-numpy                     2.3.5  
-pandas                    2.3.3  
-peft                      0.18.1  
-pillow                    12.1.1  
-pytrec_eval-terrier       0.5.10  
-qwen-vl-utils             0.0.14  
-ray                       2.53.0  
-regex                     2026.1.15  
-sacrebleu                 2.6.0  
-safetensors               0.7.0  
-scikit-learn              1.8.0  
-scipy                     1.17.0  
-sentence-transformers     5.2.2  
-sentencepiece             0.2.1  
-tensorboard               2.20.0  
-tensorboardX              2.6.4  
-torch                     2.8.0  
-torchvision               0.23.0  
-tqdm                      4.67.1  
+Byaldi
+accelerate
+bitsandbytes
+colpali_engine
+datasets
+deepspeed
+einops
+evaluate
+flash_attn
+huggingface_hub
+jsonlines
+matplotlib-inline
+numpy
+pandas
+peft
+pillow
+pytrec_eval-terrier
+qwen-vl-utils
+ray
+regex
+sacrebleu
+safetensors
+scikit-learn
+scipy
+sentence-transformers
+sentencepiece
+tensorboard
+tensorboardX
+torch
+torchvision
+tqdm
 trackio
-transformers              5.0.0rc1  
-trl                       0.27.1
+transformers
+trl

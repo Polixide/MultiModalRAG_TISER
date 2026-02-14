@@ -1,9 +1,9 @@
 # dataset paths
-TISER_TRAIN_JSON = "TISER_train.json"
-TISER_TEST_JSON = "TISER_test.json"
-MM_TISER_TRAIN_JSON = "mm_TISER_train.json"
-MM_TISER_TEST_JSON = "mm_TISER_test.json"
-IMAGES_DIR = "mm_tiser_images"
+TISER_TRAIN_JSON = "datasets/TISER_train.json"
+TISER_TEST_JSON = "datasets/TISER_test.json"
+MM_TISER_TRAIN_JSON = "datasets/mm_TISER_train.json"
+MM_TISER_TEST_JSON = "datasets/mm_TISER_test.json"
+IMAGES_DIR = "datasets/mm_TISER_images"
 
 # base / finetuned model ids
 QWEN_BASE_ID = "Qwen/Qwen3-VL-8B-Instruct"
